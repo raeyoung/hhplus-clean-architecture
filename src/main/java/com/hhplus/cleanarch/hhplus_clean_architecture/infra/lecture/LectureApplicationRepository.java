@@ -21,4 +21,8 @@ public interface LectureApplicationRepository extends JpaRepository<LectureAppli
     List<LectureApplicationAndLecture> findCompletedLecturesByUserId(@Param("userId") Long userId);
 
     Optional<LectureApplication> findByUserIdAndLectureIdAndApplicationStatus(Long userId, Long lectureId, ApplicationStatus applicationStatus);
+
+    List<LectureApplication> findByUserId(long userId);
+
+    List<LectureApplication> findByLectureId(long lectureId);
 }

@@ -1,11 +1,9 @@
 package com.hhplus.cleanarch.hhplus_clean_architecture.interfaces.lecture;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

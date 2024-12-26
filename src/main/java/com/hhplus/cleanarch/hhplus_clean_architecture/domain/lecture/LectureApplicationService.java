@@ -2,6 +2,7 @@ package com.hhplus.cleanarch.hhplus_clean_architecture.domain.lecture;
 
 import com.hhplus.cleanarch.hhplus_clean_architecture.global.exception.AlreadyAppliedException;
 import com.hhplus.cleanarch.hhplus_clean_architecture.global.exception.LimitExceededException;
+import com.hhplus.cleanarch.hhplus_clean_architecture.global.exception.NotFoundException;
 import com.hhplus.cleanarch.hhplus_clean_architecture.infra.lecture.LectureApplicationRepository;
 import com.hhplus.cleanarch.hhplus_clean_architecture.infra.lecture.LectureRepository;
 import com.hhplus.cleanarch.hhplus_clean_architecture.infra.user.UserRepository;
@@ -34,11 +35,8 @@ public class LectureApplicationService {
         Long userId = request.getUserId();
         Long lectureId = request.getLectureId();
 
-        // 사용자 검증
-        userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
         // 특강 검증
-        Lecture lecture = lectureRepository.findById(lectureId)
-                .orElseThrow(() -> new IllegalArgumentException("특강을 찾을 수 없습니다."));
+        Lecture lecture = lectureRepository.findById(lectureId).orElseThrow(() -> new NotFoundException("특강을 찾을 수 없습니다."));
 
         LectureApplication lectureApplication = null;
 
