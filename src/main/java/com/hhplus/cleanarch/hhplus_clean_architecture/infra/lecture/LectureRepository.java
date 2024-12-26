@@ -19,8 +19,8 @@ public interface LectureRepository extends JpaRepository<Lecture, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<Lecture> findById(Long lectureId);
 
-    @Query("SELECT l FROM Lecture l WHERE l.lectureStatus = :lectureStatus AND l.startAt = :startAt AND l.endAt = :endAt")
+    @Query("SELECT l FROM Lecture l WHERE l.lectureStatus = :lectureStatus AND l.startAt >= :startAt AND l.endAt <= :endAt")
     List<Lecture> findLecturesByIdAndDateAndStatus(@Param("lectureStatus") LectureStatus lectureStatus,
                                                    @Param("startAt") LocalDate startAt,
-                                                   @Param("startAt") LocalDate endAt);
+                                                   @Param("endAt") LocalDate endAt);
 }
