@@ -15,14 +15,10 @@ import java.util.Optional;
 public interface LectureApplicationRepository extends JpaRepository<LectureApplication, Long> {
 
     @Query("SELECT new com.hhplus.cleanarch.hhplus_clean_architecture.interfaces.lecture.LectureApplicationAndLecture(" +
-            "lh.id, lh.userId, lh.lectureId, lh.appliedAt, l.title, l.instructorName, lh.status) " +
+            "lh.id, lh.userId, lh.lectureId, lh.appliedAt, l.title, l.instructorName, lh.applicationStatus) " +
             "FROM LectureApplication lh JOIN Lecture l ON lh.lectureId = l.id " +
-            "WHERE lh.userId = :userId AND lh.status = com.hhplus.cleanarch.hhplus_clean_architecture.domain.lecture.ApplicationStatus.SUCCESS")
+            "WHERE lh.userId = :userId AND lh.applicationStatus = com.hhplus.cleanarch.hhplus_clean_architecture.domain.lecture.ApplicationStatus.SUCCESS")
     List<LectureApplicationAndLecture> findCompletedLecturesByUserId(@Param("userId") Long userId);
 
-    Optional<LectureApplication> findByUserIdAndLectureIdAndStatus(Long userId, Long lectureId, ApplicationStatus success);
-
-    List<LectureApplication> findByUserId(long userId);
-
-    List<LectureApplication> findByLectureId(long lectureId);
+    Optional<LectureApplication> findByUserIdAndLectureIdAndApplicationStatus(Long userId, Long lectureId, ApplicationStatus applicationStatus);
 }

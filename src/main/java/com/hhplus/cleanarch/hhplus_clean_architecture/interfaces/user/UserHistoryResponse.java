@@ -14,5 +14,5 @@ public class UserHistoryResponse {
     private LocalDateTime appliedAt;
     private String lectureTitle;
     private String lectureName;
-    private String historyStatus;
+    private String applicationStatus;
 }

@@ -23,12 +23,12 @@ public class UserService {
      */
     public List<LectureApplicationAndLecture> getApplyStatus(Long userId) {
         // 특강 신청 완료 목록을 조회
-        List<LectureApplicationAndLecture> histories = lectureApplicationRepository.findCompletedLecturesByUserId(userId);
+        List<LectureApplicationAndLecture> lectures = lectureApplicationRepository.findCompletedLecturesByUserId(userId);
 
-        if (histories == null || histories.isEmpty()) {
-            throw new NotFoundException("Lecture history not found");
+        // 신청 완료한 목록이 없는 경우 예외 처리
+        if (lectures == null || lectures.isEmpty()) {
+            throw new NotFoundException("Lecture not found");
         }
-
-        return histories;
+        return lectures;
     }
 }

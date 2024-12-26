@@ -43,7 +43,7 @@ class UserServiceTest {
         mockData1.setAppliedAt(LocalDateTime.of(2024,9,20,15,30));
         mockData1.setLectureTitle("자바");
         mockData1.setInstructorName("하헌우");
-        mockData1.setStatus(ApplicationStatus.SUCCESS);
+        mockData1.setApplicationStatus(ApplicationStatus.SUCCESS);
 
         LectureApplicationAndLecture mockData2 = new LectureApplicationAndLecture();
         mockData2.setId(1L);
@@ -52,7 +52,7 @@ class UserServiceTest {
         mockData2.setAppliedAt(LocalDateTime.of(2024,9,20,15,30));
         mockData2.setLectureTitle("스프링");
         mockData2.setInstructorName("하헌우");
-        mockData2.setStatus(ApplicationStatus.SUCCESS);
+        mockData2.setApplicationStatus(ApplicationStatus.SUCCESS);
 
         when(lectureApplicationRepository.findCompletedLecturesByUserId(userId)).thenReturn(
                 Arrays.asList(mockData1, mockData2)
@@ -76,7 +76,7 @@ class UserServiceTest {
         NotFoundException exception = assertThrows(NotFoundException.class, () -> userService.getApplyStatus(userId));
 
         // Then
-        assertEquals("Lecture history not found", exception.getMessage());
+        assertEquals("Lecture not found", exception.getMessage());
     }
 
 }

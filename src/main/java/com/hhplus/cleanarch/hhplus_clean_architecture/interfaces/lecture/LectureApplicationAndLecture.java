@@ -3,6 +3,7 @@ package com.hhplus.cleanarch.hhplus_clean_architecture.interfaces.lecture;
 import com.hhplus.cleanarch.hhplus_clean_architecture.domain.lecture.ApplicationStatus;
 import com.hhplus.cleanarch.hhplus_clean_architecture.interfaces.user.UserHistoryResponse;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class LectureApplicationAndLecture {
     private Long id;
     private Long userId;
@@ -18,7 +20,7 @@ public class LectureApplicationAndLecture {
     private LocalDateTime appliedAt;
     private String lectureTitle;
     private String instructorName;
-    private ApplicationStatus status;
+    private ApplicationStatus applicationStatus;
 
     public UserHistoryResponse toUserHistoryResponse() {
         return new UserHistoryResponse(
@@ -28,7 +30,7 @@ public class LectureApplicationAndLecture {
                 this.appliedAt,
                 this.lectureTitle,
                 this.instructorName,
-                this.status.toString()
+                this.applicationStatus.toString()
         );
     }
 }

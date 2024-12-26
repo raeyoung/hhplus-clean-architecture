@@ -12,13 +12,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(name = "user_id", unique = true)
+    private String userId;      // 사용자 아이디
 
     @Column(nullable = false)
-    private String name;
+    private String name;        // 사용자 이름
 
     @Column(nullable = false)
-    private String password;
+    private String password;    // 비밀번호
 
 }
