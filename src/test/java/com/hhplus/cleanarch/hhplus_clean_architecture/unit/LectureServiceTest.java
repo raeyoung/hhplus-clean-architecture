@@ -52,7 +52,6 @@ class LectureServiceTest {
                 .lectureStatus(LectureStatus.OPENED)
                 .build();
 
-
         when(lectureRepository.findLecturesByIdAndDateAndStatus(LectureStatus.OPENED, startDate, endDate))
                 .thenReturn(List.of(lecture));
 
@@ -63,5 +62,4 @@ class LectureServiceTest {
         Assertions.assertThat(lectures).hasSize(1);
         verify(lectureRepository, times(1)).findLecturesByIdAndDateAndStatus(LectureStatus.OPENED, startDate, endDate);
     }
-
 }

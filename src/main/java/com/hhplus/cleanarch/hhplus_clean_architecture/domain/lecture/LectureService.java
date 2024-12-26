@@ -6,8 +6,6 @@ import com.hhplus.cleanarch.hhplus_clean_architecture.interfaces.lecture.Lecture
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -24,18 +22,16 @@ public class LectureService {
      * @return
      */
     public List<Lecture> getLectures(LectureDateRequest request) {
-
         LocalDate startAt = request.getStartAt();
         LocalDate endAt = request.getEndAt();
 
-        // 강의 목록 조회
+        // 강의 목록 조회 (사용자는 각 특강에 신청하기 전 목록을 조회해볼 수 있어야 한다)
         List<Lecture> lectures = lectureRepository.findLecturesByIdAndDateAndStatus(LectureStatus.OPENED, startAt, endAt);
 
+        // 신청 가능한 목록이 없는 경우 예외 처리
         if (lectures == null || lectures.isEmpty()) {
             throw new NotFoundException("Lecture not found");
         }
-
         return lectures;
     }
-
 }

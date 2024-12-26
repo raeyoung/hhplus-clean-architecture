@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApplyResponse {
-    private Long lectureId;             // 신청한 특강의 ID
-    private Long userId;                // 사용자 ID
-    private LocalDateTime appliedAt;    // 신청 일시
-    private ApplicationStatus status;       // 신청 상태
+    private Long lectureId;                         // 신청한 특강의 ID
+    private Long userId;                            // 사용자 ID
+    private LocalDateTime appliedAt;                // 신청 일시
+    private ApplicationStatus applicationStatus;    // 신청 상태
 }
